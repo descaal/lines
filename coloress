@@ -1,0 +1,101 @@
+int radio = 4;        
+float xpos, ypos, xpos2, ypos2;    
+float xspeed = 3.0;  
+float yspeed = 2.0;  
+
+int xdirection = 1;  
+int ydirection = 1;  
+
+int xdirection2 = -1; 
+int ydirection2 = -1; 
+
+color a=color(255,0,255); 
+color b1=color(254,0,0);
+color c=color(100,5,235);
+color d= color(0,255,0);
+
+void setup() 
+{
+  size(640, 640);  
+  noStroke();
+  background(0);   
+  frameRate(680);  
+  ellipseMode(RADIUS);  
+  
+ 
+  xpos = width/3;
+  ypos = height/3;
+  xpos2 =xpos;
+  ypos2=ypos;
+  
+}
+
+void draw() 
+{
+ 
+  
+  xpos = xpos + ( xspeed * xdirection );
+  ypos = ypos + ( yspeed * ydirection );
+ 
+  xpos2 = xpos2 + ( xspeed * xdirection2 );
+  ypos2 = ypos2 + ( yspeed * ydirection2 );
+  
+  
+  
+  
+  if (xpos > width-radio || xpos < radio) {
+    xdirection *= -1;
+  }
+  if (ypos > height-radio || ypos < radio) {
+    ydirection *= -1;
+  }
+  
+  if (xpos2 > width-radio || xpos2 < radio) {
+    xdirection2 *= -1;
+  }
+  if (ypos2 > height-radio || ypos2 < radio) {
+    ydirection2 *= -1;
+  }
+ 
+  
+  fill(a);
+  //stroke(0,255,255);
+  ellipse(xpos, ypos, radio, radio);
+  
+  fill(b1);
+  //stroke(0,255,255);
+  ellipse(ypos,xpos,radio,radio);
+  
+  fill(c);
+  //stroke(0,255,255);
+  ellipse(xpos2,ypos2,radio,radio);
+  
+   fill(d);
+  //stroke(0,255,255);
+  ellipse(ypos2,xpos2,radio,radio);
+  
+ 
+
+}
+
+   
+   void mousePressed(){
+     
+     
+    a=color(int(random(255)),int(random(255)),int(random(255)));
+    fill(a);
+    ellipse(xpos, ypos, radio, radio);
+ 
+    b1=color(int(random(255)),int(random(255)),int(random(255)));
+    fill(b1);
+    ellipse(ypos,xpos,radio,radio);
+      
+     c=color(int(random(255)),int(random(255)),int(random(255)));
+     fill(c);
+     ellipse(xpos2,ypos2,radio,radio);
+  
+     d =color(int(random(255)),int(random(255)),int(random(255)));
+     fill(d);
+     ellipse(ypos2,xpos2,radio,radio);
+  }
+  
